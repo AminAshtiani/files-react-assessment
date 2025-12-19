@@ -1,5 +1,5 @@
 import { Folder } from "~/components";
-import { GridView, TableView } from "~/components/Folder/View/";
+import { GridView, TableView } from "~/components/View";
 import { useApi } from "~/hooks/useApi";
 import type { FolderItem } from "~/types";
 

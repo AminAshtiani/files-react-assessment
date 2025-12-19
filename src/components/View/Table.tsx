@@ -1,5 +1,5 @@
 import { Table } from "@mantine/core";
-import { FolderActions } from "../FolderActions";
+import { FolderActions } from "../Folder/FolderActions";
 import type { FolderItem, FolderItemOptions } from "~/types";
 
 type TableViewProps = {
