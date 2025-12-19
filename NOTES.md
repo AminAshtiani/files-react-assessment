@@ -21,3 +21,5 @@
   - The “minimal external dependencies” constraint makes me confident to keep application as small as I can until I have to. in this case we don't need to add a new dependency which force us to refactor all listing component.
 
 ## What I would improve next with more time
+- if you check useApi it has a very simple implementation which add loading status, errors. but if I want to improve the app I would definitly refactor this part with react-query, RQ will gives use all we've already implemented with more utility like cache, type safty and more.
+- 

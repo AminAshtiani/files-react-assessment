@@ -10,5 +10,5 @@ export type FolderItem = {
 
 export type FolderItemOptions = {
   label: string;
-  onClick: (item: FolderItem) => void;
+  onClick: (item?: FolderItem) => void;
 };

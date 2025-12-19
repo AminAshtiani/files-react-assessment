@@ -1,24 +1,30 @@
-import { useEffect, useState } from "react";
 import { Folder } from "~/components";
 import { GridView, TableView } from "~/components/Folder/View";
+import { useApi } from "~/hooks/useApi";
+import type { FolderItem } from "~/types";
 
 export const Favorites = () => {
-  const [data, setData] = useState([]);
+  const { data, error, loading } = useApi<FolderItem[]>({ 
+    url: "/favorites.json", 
+    refGuard: true 
+  });
+  
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  useEffect(() => {
-    fetch("/items.json")
-      .then((res) => {
-        return res.json();
-      })
-      .then((result) => {
-        setData(result.items);
-      });
-  }, [{}]);
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (!data) {
+    return <div>No data</div>;
+  }
 
   return (
     <Folder
       navTitle="Favorites"
-      data={data}
+      data={data || []}
       gridView={GridView}
       tableView={TableView}
       options={[

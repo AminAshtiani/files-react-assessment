@@ -3,15 +3,13 @@ import { useEffect, useState, type FC } from "react";
 import { FolderNavigation } from "./FolderNavigation";
 import type { FolderItem, FolderItemOptions } from "~/types";
 
-type FolderProps = {
+export const Folder = (props: {
   data: FolderItem[];
   navTitle: string;
   gridView: FC<{ items: FolderItem[]; options: FolderItemOptions[] }>;
   tableView: FC<{ items: FolderItem[]; options: FolderItemOptions[] }>;
-  options: FolderItemOptions[];
-};
-
-export const Folder = (props: FolderProps) => {
+  options?: FolderItemOptions[];
+}) => {
   const [data, setData] = useState<FolderItem[]>([]);
   const [activeTab, setActiveTab] = useState("grid");
 
