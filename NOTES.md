@@ -8,7 +8,7 @@
 ## What I changed and why
 - based on `items.json` and `favorites.json` create item type and other related type and use them in code.
 - file structure is a little complicated and cofusing, I change components folder structure, add some new directory like `utils` which is more accissible and readable
-- fetching data in both home and favorite page has the same pattern, also has a critical bug which calls the api repeatedly. I make a hook for api calls, add loading, error and ref guard to it. the hook is also handle types.
+- fetching data in both home and favorite page has the same pattern, also has a critical bug which calls the api repeatedly and wrong api call in favorite page. I make a hook for api calls, add loading, error and ref guard to it. the hook is also handle types.
 - there were some dependencies in package.json which were unused, I check what will be needed and remove the other(`hooks` and `dates`). make utility method for date handling and also add modal provider to show modal instead of browser alert.
 - I make some change in sidebar to use react-router features. before that on every navigation page was reloaded becaues sidebar bypassed the react router and do the navidation without it.
 
