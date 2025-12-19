@@ -1,7 +1,14 @@
 import { Card, Text, SimpleGrid, Group, Badge } from "@mantine/core";
 import { FolderActions } from "../FolderActions";
+import type { FolderItem, FolderItemOptions } from "~/types";
 
-export const GridView = ({ items, options }) => {
+type GridViewProps = {
+  items: FolderItem[];
+  options: FolderItemOptions[];
+};
+
+export const GridView = (props: GridViewProps) => {
+  const { items, options } = props;
   return (
     <SimpleGrid
       cols={{ base: 1, sm: 2, md: 3, lg: 4 }}

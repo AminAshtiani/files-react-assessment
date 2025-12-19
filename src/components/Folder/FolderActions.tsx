@@ -1,18 +1,24 @@
 import { ActionIcon, Paper, Text } from "@mantine/core";
 import { IconDots } from "@tabler/icons-react";
 import { useEffect, useRef, useState } from "react";
+import type { FolderItem, FolderItemOptions } from "~/types";
 
-export const FolderActions = (props: any) => {
+type FolderActionsProps = {
+  item: FolderItem;
+  options: FolderItemOptions[];
+};
+
+export const FolderActions = (props: FolderActionsProps) => {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
   useEffect(() => {
-    document.addEventListener("click", (e: any) => {
-      if (ref.current && !(ref.current as any).contains(e.target)) {
+    document.addEventListener("click", (e: MouseEvent) => {
+      if (ref.current && !(ref.current as HTMLElement).contains(e.target as Node)) {
         setOpen(false);
       }
     });
-  });
+  }, []);
 
   return (
     <div
@@ -45,7 +51,7 @@ export const FolderActions = (props: any) => {
             background: "white",
           }}
         >
-          {props.options.map((option: any, index: number) => {
+          {props.options.map((option, index) => {
             return (
               <Text
                 key={index}

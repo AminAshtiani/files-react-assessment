@@ -6,6 +6,7 @@
 - **File sturcture**: it seems that application follow feature-based sturcture, but need to be better.
 
 ## What I changed and why
+- based on `items.json` and `favorites.json` create item type and other related type and use them in code.
 
 ## Trade-offs or assumptions
 - **Did not introduce global state or data-fetching libraries**

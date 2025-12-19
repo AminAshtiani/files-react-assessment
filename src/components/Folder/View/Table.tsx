@@ -1,7 +1,14 @@
 import { Table } from "@mantine/core";
 import { FolderActions } from "../FolderActions";
+import type { FolderItem, FolderItemOptions } from "~/types";
 
-export const TableView = ({ items, options }) => {
+type TableViewProps = {
+  items: FolderItem[];
+  options: FolderItemOptions[];
+};
+
+export const TableView = (props: TableViewProps) => {
+  const { items, options } = props;
   const rows = items.map((item) => (
     <Table.Tr key={item.id}>
       <Table.Td>{item.id}</Table.Td>

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Folder } from "~/components";
 import { GridView, TableView } from "~/components/Folder/View/";
+import type { FolderItem } from "~/types";
 
 export const Homepage = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<FolderItem[]>([]);
 
   useEffect(() => {
     fetch("/items.json")
