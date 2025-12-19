@@ -1,6 +1,7 @@
 import { Table } from "@mantine/core";
 import { FolderActions } from "../Folder/FolderActions";
 import type { FolderItem, FolderItemOptions } from "~/types";
+import { dayjs } from "~/utils/date";
 
 type TableViewProps = {
   items: FolderItem[];
@@ -15,12 +16,7 @@ export const TableView = (props: TableViewProps) => {
       <Table.Td>{item.name}</Table.Td>
       <Table.Td>{item.type}</Table.Td>
       <Table.Td>
-        {new Date(item.updatedAt).toLocaleDateString("en-US")} at{" "}
-        {new Date(item.updatedAt).toLocaleTimeString("en-US", {
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: true,
-        })}
+        {dayjs(item.updatedAt).format("YYYY/MM/DD HH:mm")} at{" "}
       </Table.Td>
       <Table.Td>{item.updatedAt}</Table.Td>
       <Table.Td>

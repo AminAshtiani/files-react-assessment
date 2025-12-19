@@ -1,6 +1,7 @@
 import { Card, Text, SimpleGrid, Group, Badge } from "@mantine/core";
 import { FolderActions } from "../Folder/FolderActions";
 import type { FolderItem, FolderItemOptions } from "~/types";
+import { dayjs } from "~/utils/date";
 
 type GridViewProps = {
   items: FolderItem[];
@@ -41,20 +42,10 @@ export const GridView = (props: GridViewProps) => {
           </Group>
 
           <Text size="sm" c="dimmed">
-            Created: {new Date(item.createdAt).toLocaleDateString("en-US")} at{" "}
-            {new Date(item.createdAt).toLocaleTimeString("en-US", {
-              hour: "2-digit",
-              minute: "2-digit",
-              hour12: true,
-            })}
+            Created: {dayjs(item.createdAt).format("YYYY/MM/DD HH:mm")} at{" "}
           </Text>
           <Text size="sm" c="dimmed">
-            Updated: {new Date(item.updatedAt).toLocaleDateString("en-US")} at{" "}
-            {new Date(item.updatedAt).toLocaleTimeString("en-US", {
-              hour: "2-digit",
-              minute: "2-digit",
-              hour12: true,
-            })}
+            Updated: {dayjs(item.updatedAt).format("YYYY/MM/DD HH:mm")}
           </Text>
         </Card>
       ))}
