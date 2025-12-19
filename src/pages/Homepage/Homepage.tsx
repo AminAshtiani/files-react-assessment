@@ -1,3 +1,5 @@
+import { modals } from "@mantine/modals";
+import { Text } from "@mantine/core";
 import { Folder } from "~/components";
 import { GridView, TableView } from "~/components/View";
 import { useApi } from "~/hooks/useApi";
@@ -31,19 +33,61 @@ export const Homepage = () => {
         {
           label: "Mark as Favorite",
           onClick() {
-            alert("Marked as Favorite");
+            modals.openConfirmModal({
+              title: "Mark as Favorite",
+              children: (<Text>Are you sure you want to mark this item as favorite?</Text>),
+              labels: {
+                confirm: "Mark as Favorite",
+                cancel: "Cancel",
+              },
+              onConfirm: () => {
+                console.log("Marked as Favorite");
+              },
+              onCancel: () => {
+                console.log("Cancelled");
+              },
+            });
           },
         },
         {
           label: "Share",
           onClick() {
-            alert("Shared");
+            modals.openConfirmModal({
+              title: "Share",
+              children: (<Text>Are you sure you want to share this item?</Text>),
+              labels: {
+                confirm: "Share",
+                cancel: "Cancel",
+              },
+              onConfirm: () => {
+                console.log("Shared");
+              },
+              onCancel: () => {
+                console.log("Cancelled");
+              },
+            });
           },
         },
         {
           label: "Delete",
           onClick() {
-            alert("Deleted");
+            modals.openConfirmModal({
+              title: "Delete",
+              children: (<Text>Are you sure you want to delete this item?</Text>),
+              labels: {
+                confirm: "Delete",
+                cancel: "Cancel",
+              },
+              confirmProps: {
+                color: "red",
+              },
+              onConfirm: () => {
+                console.log("Deleted");
+              },
+              onCancel: () => {
+                console.log("Cancelled");
+              },
+            });
           },
         },
       ]}
