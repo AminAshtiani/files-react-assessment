@@ -1,4 +1,5 @@
 import { createTheme, MantineProvider } from "@mantine/core";
+import { ModalsProvider } from "@mantine/modals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { DefaultLayout } from "./layouts";
 import { Favorites, Homepage } from "./pages";
@@ -21,7 +22,9 @@ const router = createBrowserRouter([
 export const App = () => {
   return (
     <MantineProvider theme={theme}>
-      <RouterProvider router={router} />
+      <ModalsProvider>
+        <RouterProvider router={router} />
+      </ModalsProvider>
     </MantineProvider>
   );
 };

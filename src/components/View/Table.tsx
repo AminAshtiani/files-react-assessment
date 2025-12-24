@@ -1,19 +1,22 @@
 import { Table } from "@mantine/core";
-import { FolderActions } from "../FolderActions";
+import { FolderActions } from "../Folder/FolderActions";
+import type { FolderItem, FolderItemOptions } from "~/types";
+import { dayjs } from "~/utils/date";
 
-export const TableView = ({ items, options }) => {
+type TableViewProps = {
+  items: FolderItem[];
+  options: FolderItemOptions[];
+};
+
+export const TableView = (props: TableViewProps) => {
+  const { items, options } = props;
   const rows = items.map((item) => (
     <Table.Tr key={item.id}>
       <Table.Td>{item.id}</Table.Td>
       <Table.Td>{item.name}</Table.Td>
       <Table.Td>{item.type}</Table.Td>
       <Table.Td>
-        {new Date(item.updatedAt).toLocaleDateString("en-US")} at{" "}
-        {new Date(item.updatedAt).toLocaleTimeString("en-US", {
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: true,
-        })}
+        {dayjs(item.updatedAt).format("YYYY/MM/DD HH:mm")} at{" "}
       </Table.Td>
       <Table.Td>{item.updatedAt}</Table.Td>
       <Table.Td>

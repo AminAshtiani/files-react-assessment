@@ -1,8 +1,10 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 
 import { Button, Paper, Stack } from "@mantine/core";
 
 export const Sidebar = () => {
+  const location = useLocation();
+
   return (
     <Paper
       withBorder
@@ -15,15 +17,17 @@ export const Sidebar = () => {
     >
       <Stack>
         <Button
-          onClick={() => (window.location.href = "/")}
-          variant={window.location.pathname === "/" ? "filled" : "default"}
+          component={Link}
+          to="/"
+          variant={location.pathname === "/" ? "filled" : "default"}
         >
           Homepage
         </Button>
 
         <Button
-          onClick={() => (window.location.href = "/favorites")}
-          variant={window.location.pathname === "/favorites" ? "filled" : "default"}
+          component={Link}
+          to="/favorites"
+          variant={location.pathname === "/favorites" ? "filled" : "default"}
         >
           Favorites
         </Button>

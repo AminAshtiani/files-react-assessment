@@ -1,30 +1,19 @@
 import { Paper, Stack, Tabs } from "@mantine/core";
-import { useEffect, useState, type FC } from "react";
+import { useState, type FC } from "react";
 import { FolderNavigation } from "./FolderNavigation";
-
-type Item = {
-  id: number;
-  name: string;
-  type: string;
-  createdAt: string;
-  updatedAt: string;
-};
+import type { FolderItem, FolderItemOptions } from "~/types";
 
 export const Folder = (props: {
-  data: Array<Item>;
+  data: FolderItem[];
   navTitle: string;
-  gridView: FC<any>;
-  tableView: FC<any>;
-  options?: Array<{ label: string; onClick: Function }>;
+  gridView: FC<{ items: FolderItem[]; options: FolderItemOptions[] }>;
+  tableView: FC<{ items: FolderItem[]; options: FolderItemOptions[] }>;
+  options?: FolderItemOptions[];
 }) => {
-  const [data, setData] = useState<any>();
+  const { data, options } = props;
   const [activeTab, setActiveTab] = useState("grid");
 
-  useEffect(() => {
-    setData(props.data);
-  }, [props]);
-
-  let ViewComponent: any;
+  let ViewComponent: FC<{ items: FolderItem[]; options: FolderItemOptions[] }>;
   if (activeTab === "grid") {
     ViewComponent = props.gridView;
   } else {
@@ -43,7 +32,7 @@ export const Folder = (props: {
       </Tabs>
 
       <Stack>
-        <ViewComponent items={data} options={props.options} />
+        <ViewComponent items={data} options={options || []} />
       </Stack>
     </Paper>
   );
